@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      margin-top: 100px;
+      text-align: center;
+    }
+
+    button {
+      width: 100px;
+      height: 50px;
+      margin-right: 40px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button class="btn" data-type="success">成功消息</button>
+    <button class="btn" data-type="error">失败消息</button>
+    <button class="btn" data-type="info">普通消息</button>
+  </div>
+
+  <script type="module">
+    import { message } from './message-box.js';
+
+    for(let button of document.getElementsByClassName('btn')) {
+      button.addEventListener('click', () => {
+        message[button.dataset['type']](button.textContent);
+      });
+    }
+    
+  </script>
+</body>
+</html>

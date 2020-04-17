@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <popup-box>
+    <span slot="trigger">hover我可以弹出一个弹窗哦</span>
+
+    <ul slot="content">
+      <li>我是第一条</li>
+      <li>我是第二条</li>
+      <li>我是第三条</li>
+    </ul>
+  </popup-box>
+
+  <template id="popup">
+    <style>
+      .popup-content {
+        width: 300px;
+        border: 1px solid black;
+        display: none;
+      }
+
+      .popup-content--show {
+        display: block;
+      }
+    </style>
+    <slot class="" name="trigger"></slot>
+    <div class="popup-content">
+      <slot name="content"></slot>
+    </div>
+  </template>
+  <script type="module">
+    import PopupBox from './module.js';
+
+    customElements.define('popup-box', PopupBox);
+  </script>
+</body>
+</html>
